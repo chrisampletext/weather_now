@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<style>
+header{
+  background-color: #FFFFFF;
+  width : 100%;
+  height : 50px;
+  position: fixed;
+  //border-bottom-left-radius: 20px;
+  //border-bottom-right-radius: 20px;
+  top:0;
+  left: 0;
+box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+}
+
+input{
+  top: 50px;
+  left: 895px;
+  position: absolute;
+  height : 30px;
+  width : 200px;
+  box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+  border-radius: 5px;
+
+}
+
+#search{
+  position: absolute;
+  top: 50px;
+  left: 1100px;
+  height : 38px;
+  width : 50px;
+  text-align: center;
+  background-color: #a4f442;
+  box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+  border-radius: 5px;
+}
+
+
+#home{
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  height : 38px;
+  width : 50px;
+  text-align: center;
+  background-color: #a4f442;
+  box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+  border-radius: 5px;
+}
+
+#time{
+
+  background-color: #FFFFFF;
+  position: absolute;
+  height : 100%;
+  width : 300px;
+  box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+  border-radius: 10px;
+  font-family: fantasy;
+  font-size: 40px;
+
+}
+.next{
+  height: 300px;
+  width: 300px;
+  float: left;
+  color: 	#FFFFFF;
+  box-shadow: 10px 10px 5px 0px rgba(122,121,122,1);
+  border-radius: 10px;
+}
+
+
+body{
+background-color: #A593D8;
+}
+
+#icon{
+  position: relative;
+  top: 60px;
+  left: 0px;
+}
+
+#city{
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  font-family: fantasy;
+  font-size: 30px;
+  height : 100px;
+  width : 250px;
+}
+
+
+
+#description{
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  font-family: sans-serif;
+  font-size: 20px;
+  height : 100px;
+  width : 250px;
+  text-align: center;
+}
+
+#temperature{
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  font-family: sans-serif;
+  font-size: 30px;
+  height : 100px;
+  width : 250px;
+  text-align: center;
+}
+
+
+
+</style>
+
+
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="views\resources\style.css">
+  </head>
+  <header>
+
+  </header>
+  <body>
+    <form method="GET" action="/">
+      <button id='home'>Home</button>
+    </form>
+
+    <form method="POST" action="/5-day">
+      <input type="text" name = "city_name">
+      <button id ='search'>search</button>
+    </form>
+
+
+
+
+
+      <%for(var curweather of total){
+        console.log(curweather.weather.city)%>
+      <div class='next'>
+        <ul id="icon"><img src = 'http://openweathermap.org/img/w/<%= curweather.weather.icon %>.png'> <ul>
+
+        <ul id="city"> <%=curweather.weather.city%><ul>
+
+        <ul id="description"> <%=curweather.weather.time%><ul>
+
+        <ul id="description"> <%=curweather.weather.des%><ul>
+
+        <ul id="temperature"> <%=curweather.weather.temp%>°C<ul>
+      </div>
+      <%}%>
+
+
+
+
+
+  </body>
+
+
+</html>
