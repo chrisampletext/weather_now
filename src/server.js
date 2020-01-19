@@ -6,9 +6,7 @@ var nodemailer = require('nodemailer');
 var app = express();
 app.set ('view engine', 'ejs');
 app.use (bodyParser.urlencoded({ extended: true }));
-//var city = "New York"
 var units = "Metric"
-
 
 app.post('/email',function(req,res){
   console.log(req.body.email);
@@ -47,7 +45,6 @@ var weather_total;
 
   res.render('index.ejs',weather_total);
 
-
 });
 
 
@@ -58,17 +55,18 @@ app.get('/5-day',function(req,res){
 
   res.render('5-day.ejs',{
     total:[
-      {weather:{
+      {
+    weather:{
       city : "",
       time : "",
       des  : "",
       temp : "",
       icon : ""
-  }
+      }
     }
   ]
-});
 
+});
 
 });
 
@@ -81,7 +79,6 @@ app.post('/5-day',function(req,res){
 
       json_weather = JSON.parse(body);
 
-
       if(resp.code == 404){
         weather_total = {
             weather: {
@@ -91,7 +88,9 @@ app.post('/5-day',function(req,res){
             icon : "No Data"
           }
       }
-    }else{
+    }
+    else
+    {
 
       for(var i = 0; i < json_weather.list.length; i++){
         cur_weather_total = {
@@ -106,6 +105,7 @@ app.post('/5-day',function(req,res){
 
           }
         }
+
       five_day_weather_total.push(cur_weather_total);
       }
 
@@ -114,8 +114,7 @@ app.post('/5-day',function(req,res){
       }
 
     }
-console.log(weather_total);
-    //return view with view model
+
       res.render('5-day.ejs',weather_total);
     });
 
